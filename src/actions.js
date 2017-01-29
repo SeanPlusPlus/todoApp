@@ -38,7 +38,8 @@ function receivePosts(subreddit, json) {
 function fetchPosts(subreddit) {
   return (dispatch) => {
     dispatch(requestPosts(subreddit));
-    return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+    const url = `http://localhost:8000/${subreddit}.json`;
+    return fetch(url)
       .then(response => response.json())
       .then(json => dispatch(receivePosts(subreddit, json)));
   };

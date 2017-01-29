@@ -43,7 +43,7 @@ class AsyncApp extends Component {
         <Picker
           value={selectedSubreddit}
           onChange={this.handleChange}
-          options={['reactjs', 'frontend']}
+          options={['reactjs', 'frontend', 'programming']}
         />
         <p>
           {lastUpdated &&
