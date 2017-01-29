@@ -1,0 +1,82 @@
+{
+  "name": "redux-tutorial",
+  "version": "1.0.0",
+  "description": "JavaScript Stack with Redux",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tutorial-test": "gulp main"
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "rules": {
+      "consistent-return": 0,
+      "react/prop-types": 0,
+      "import/no-mutable-exports": 0,
+      "jsx-a11y/href-no-hash": 0,
+      "arrow-body-style": 0,
+      "react/no-unused-prop-types": 0,
+      "no-console": 0,
+      "react/jsx-no-bind": 0,
+      "react/forbid-prop-types": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "no-mixed-operators": "off",
+      "prefer-template": "off",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ]
+    },
+    "plugins": [
+      "import"
+    ],
+    "env": {
+      "browser": true
+    }
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ]
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-preset-latest": "^6.16.0",
+    "del": "^2.2.2",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.4.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
+    "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-open": "^2.0.0",
+    "gulp-watch": "^4.3.11",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-devtools": "^3.3.1",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.2.0"
+  },
+  "repository": "SeanPlusPlus/redux-tutorial",
+  "author": "@SeanPlusPlus",
+  "license": "MIT"
+}
