@@ -2,51 +2,51 @@ import fetch from 'isomorphic-fetch';
 
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
-export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
-export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
+export const SELECT_USER = 'SELECT_USER';
+export const INVALIDATE_USER = 'INVALIDATE_USER';
 
-export function selectSubreddit(subreddit) {
+export function selectUser(user) {
   return {
-    type: SELECT_SUBREDDIT,
-    subreddit,
+    type: SELECT_USER,
+    user,
   };
 }
 
-export function invalidateSubreddit(subreddit) {
+export function invalidateUser(user) {
   return {
-    type: INVALIDATE_SUBREDDIT,
-    subreddit,
+    type: INVALIDATE_USER,
+    user,
   };
 }
 
-function requestPosts(subreddit) {
+function requestPosts(user) {
   return {
     type: REQUEST_POSTS,
-    subreddit,
+    user,
   };
 }
 
-function receivePosts(subreddit, json) {
+function receivePosts(user, json) {
   return {
     type: RECEIVE_POSTS,
-    subreddit,
+    user,
     posts: json.data.children.map(child => child.data),
     receivedAt: Date.now(),
   };
 }
 
-function fetchPosts(subreddit) {
+function fetchPosts(user) {
   return (dispatch) => {
-    dispatch(requestPosts(subreddit));
-    const url = `http://localhost:8000/${subreddit}.json`;
+    dispatch(requestPosts(user));
+    const url = `http://localhost:8000/${user}.json`;
     return fetch(url)
       .then(response => response.json())
-      .then(json => dispatch(receivePosts(subreddit, json)));
+      .then(json => dispatch(receivePosts(user, json)));
   };
 }
 
-function shouldFetchPosts(state, subreddit) {
-  const posts = state.postsBySubreddit[subreddit];
+function shouldFetchPosts(state, user) {
+  const posts = state.postsByUser[user];
   if (!posts) {
     return true;
   } else if (posts.isFetching) {
@@ -55,10 +55,10 @@ function shouldFetchPosts(state, subreddit) {
   return posts.didInvalidate;
 }
 
-export function fetchPostsIfNeeded(subreddit) {
+export function fetchPostsIfNeeded(user) {
   return (dispatch, getState) => {
-    if (shouldFetchPosts(getState(), subreddit)) {
-      return dispatch(fetchPosts(subreddit));
+    if (shouldFetchPosts(getState(), user)) {
+      return dispatch(fetchPosts(user));
     }
   };
 }
