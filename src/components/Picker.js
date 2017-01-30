@@ -11,7 +11,9 @@ export default class Picker extends Component {
     return (
       <span>
         <h1>{value}</h1>
+        <hr />
         <select
+          className="form-control"
           onChange={e => onChange(e.target.value)}
           value={value}
         >
