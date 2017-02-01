@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import configureStore from '../configureStore';
-import AsyncApp from './AsyncApp';
+import Nav from './Nav';
+import Todo from './Todo';
 
 const store = configureStore();
 
@@ -13,7 +14,10 @@ export default class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AsyncApp />
+        <div>
+          <Nav />
+          <Todo />
+        </div>
       </Provider>
     );
   }

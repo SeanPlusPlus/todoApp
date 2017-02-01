@@ -4,7 +4,7 @@ import { selectUser, fetchPostsIfNeeded, invalidateUser } from '../actions';
 import Picker from '../components/Picker';
 import Posts from '../components/Posts';
 
-class AsyncApp extends Component {
+class Todo extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -88,7 +88,7 @@ class AsyncApp extends Component {
   }
 }
 
-AsyncApp.propTypes = {
+Todo.propTypes = {
   selectedUser: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -115,4 +115,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(AsyncApp);
+export default connect(mapStateToProps)(Todo);
