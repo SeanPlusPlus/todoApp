@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { fetchNavIfNeeded } from '../actions';
 
 class Nav extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchNavIfNeeded());
+  }
+
   render() {
+    const { links } = this.props;
+    console.log(links.items);
     return (
       <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-        <button className="navbar-toggler navbar-toggler-right">
-          <span className="navbar-toggler-icon" />
-        </button>
         <a className="navbar-brand" href="#">Todo App</a>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div>
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">Disabled</a>
-            </li>
+            {links.items.map((link, i) =>
+              <li key={i} className="nav-item">{link.title}</li>
+            )}
           </ul>
         </div>
       </nav>
@@ -31,4 +31,15 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+Nav.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state) {
+  const navLinks = state.navLinks.data || { items: [] };
+  return {
+    links: navLinks,
+  };
+}
+
+export default connect(mapStateToProps)(Nav);

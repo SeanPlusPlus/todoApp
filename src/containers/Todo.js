@@ -49,6 +49,7 @@ class Todo extends Component {
 
   render() {
     const { selectedUser, posts, isFetching, lastUpdated } = this.props;
+    console.log(posts);
     return (
       <div>
         <Picker
