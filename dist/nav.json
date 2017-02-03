@@ -3,17 +3,14 @@
     "children": [
       {
         "data": {
-          "title": "home"
+          "title": "home",
+          "route": "/"
         }
       },
       {
         "data": {
-          "title": "about"
-        }
-      },
-      {
-        "data": {
-          "title": "admin"
+          "title": "about",
+          "route": "/about"
         }
       }
     ]

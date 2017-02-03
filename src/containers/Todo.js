@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { selectUser, fetchPostsIfNeeded, invalidateUser } from '../actions/todos';
 import Picker from '../components/Picker';
 import Posts from '../components/Posts';
+import Navigation from './Navigation';
 
 class Todo extends Component {
   constructor(props) {
@@ -51,38 +52,41 @@ class Todo extends Component {
     const { selectedUser, posts, isFetching, lastUpdated } = this.props;
     return (
       <div>
-        <Picker
-          value={selectedUser}
-          onChange={this.handleChange}
-          options={this.state.heroes}
-        />
-        <p>
-          {lastUpdated &&
-            <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-              {' '}
-            </span>
+        <Navigation />
+        <div className="container" id="main">
+          <Picker
+            value={selectedUser}
+            onChange={this.handleChange}
+            options={this.state.heroes}
+          />
+          <p>
+            {lastUpdated &&
+              <span>
+                Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
+                {' '}
+              </span>
+            }
+            {!isFetching &&
+              <a
+                href="#"
+                onClick={this.handleRefreshClick}
+              >
+                Refresh
+              </a>
+            }
+          </p>
+          {isFetching && posts.length === 0 &&
+            <h2>Loading...</h2>
           }
-          {!isFetching &&
-            <a
-              href="#"
-              onClick={this.handleRefreshClick}
-            >
-              Refresh
-            </a>
+          {!isFetching && posts.length === 0 &&
+            <h2>Empty.</h2>
           }
-        </p>
-        {isFetching && posts.length === 0 &&
-          <h2>Loading...</h2>
-        }
-        {!isFetching && posts.length === 0 &&
-          <h2>Empty.</h2>
-        }
-        {posts.length > 0 &&
-          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <Posts posts={posts} />
-          </div>
-        }
+          {posts.length > 0 &&
+            <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+              <Posts posts={posts} />
+            </div>
+          }
+        </div>
       </div>
     );
   }
