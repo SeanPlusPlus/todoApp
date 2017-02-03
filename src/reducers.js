@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import {
   SELECT_USER, INVALIDATE_USER,
   REQUEST_POSTS, RECEIVE_POSTS,
-  REQUEST_NAV, RECEIVE_NAV,
-} from './actions';
+} from './actions/todos';
+import { REQUEST_NAV, RECEIVE_NAV } from './actions/nav';
 
 function selectedUser(state = 'hansolo', action) {
   switch (action.type) {

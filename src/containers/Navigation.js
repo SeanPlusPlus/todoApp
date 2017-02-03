@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { fetchNavIfNeeded } from '../actions';
+import { fetchNavIfNeeded } from '../actions/nav';
 
 class Navigation extends Component {
   constructor(props) {

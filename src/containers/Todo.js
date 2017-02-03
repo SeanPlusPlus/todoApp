@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { selectUser, fetchPostsIfNeeded, invalidateUser } from '../actions';
+import { selectUser, fetchPostsIfNeeded, invalidateUser } from '../actions/todos';
 import Picker from '../components/Picker';
 import Posts from '../components/Posts';
 
