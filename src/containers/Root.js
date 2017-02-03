@@ -16,7 +16,7 @@ export default class Root extends Component {
       <Provider store={store}>
         <div>
           <Navigation />
-          <div className="container">
+          <div id="main" className="container">
             <Todo />
           </div>
         </div>
