@@ -8,6 +8,7 @@ import del from 'del';
 import webpack from 'webpack-stream';
 import connect from 'gulp-connect';
 import open from 'gulp-open';
+import exec from 'gulp-exec';
 import webpackConfig from './webpack.config.babel';
 
 const paths = {
@@ -71,3 +72,10 @@ gulp.task('op', () => {
 });
 
 gulp.task('default', ['watch', 'main', 'connect', 'op']);
+
+gulp.task('server', () => {
+  exec('node server.js', (err, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
